@@ -47,12 +47,14 @@ Energy demand forecasting is crucial for optimizing energy distribution and avoi
 ---
 
 ## Dataset
-The dataset used for this project is sourced from [Kaggle](https://www.kaggle.com/datasets/robikscube/hourly-energy-consumption). It contains historical energy consumption data, with features such as:
+The dataset used for this project is sourced from [Kaggle](https://www.kaggle.com/datasets/robikscube/hourly-energy-consumption). It contains historical energy consumption data, for specific regions in the United States with features such as:
 - Timestamps
 - Energy consumption (kWh)
 
+The dataset covers various regions in the United States, this model  is trained and tested on Eastern Interconnection grid operating an electric transmission system serving all or parts of Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia, and the District of Columbia. This is known as the PJM East Region.
+
 **Preprocessing Steps**:
-_This section is under development and will be updated soon._
+- Select a valid region in the United States to train or test the model 
 
 ---
 
@@ -62,7 +64,7 @@ _This section is under development and will be updated soon._
 ---
 
 ## Results
-_This section is under development and will be updated soon._
+_This sSection is under development and will be updated soon._
 
 ---
 
@@ -72,8 +74,7 @@ _This section is under development and will be updated soon._
 ---
 
 ## Acknowledgements
-_This section is under development and will be updated soon._
-
+Mulla, R. (2022, July 5th). Time series forecasting with XGBoost - Use Python and machine learning to predict energy consumption [Video]. YouTube. https://youtu.be/vV12dGe_Fho
 ---
 
 ### License
