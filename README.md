@@ -75,6 +75,7 @@ _This section is under development and will be updated soon._
 
 ## Acknowledgements
 Mulla, R. (2022, July 5th). Time series forecasting with XGBoost - Use Python and machine learning to predict energy consumption [Video]. YouTube. https://youtu.be/vV12dGe_Fho
+
 ---
 
 ### License
