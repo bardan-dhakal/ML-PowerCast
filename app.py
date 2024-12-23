@@ -8,3 +8,6 @@ def load_model():
     return data
 
 data = load_model()
+
+st.title("XGBoost Regression Model for predicting Energy Consumption")
+st.write("This web application predicts the energy consumption of various regions in the United States using a trained XGBoost regression model.")
