@@ -49,7 +49,7 @@ Energy demand forecasting is crucial for optimizing energy distribution and avoi
 ## Dataset
 The dataset used for this project is sourced from [Kaggle](https://www.kaggle.com/datasets/robikscube/hourly-energy-consumption). It contains historical energy consumption data, for specific regions in the United States with features such as:
 - Timestamps
-- Energy consumption (kWh)
+- Energy consumption (MWh)
 
 The dataset covers various regions in the United States, this model  is trained and tested on Eastern Interconnection grid operating an electric transmission system serving all or parts of Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia, and the District of Columbia. This is known as the PJM East Region.
 
