@@ -1,82 +1,76 @@
-# Energy Demand Forecasting Using Machine Learning
+# README.md for the energy-forecast-app
 
-This project focuses on forecasting energy demand using machine learning techniques, specifically **XGBoost** and **time series analysis**. The objective is to predict future energy consumption trends based on historical data, enabling better planning and efficient energy management.
+# Energy Consumption Forecasting Application
 
----
+This project is an Energy Consumption Forecasting application that utilizes a React frontend, Flask backend, and MySQL database. The application aims to provide users with insights into energy consumption patterns and forecasts.
 
-## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Features and Methodology](#features-and-methodology)
-3. [Technologies Used](#technologies-used)
-4. [Dataset](#dataset)
-5. [Installation and Usage](#installation-and-usage)
-6. [Results](#results)
-7. [Future Work](#future-work)
-8. [Acknowledgements](#acknowledgements)
+## Project Structure
 
----
+```
+energy-forecast-app
+├── backend
+│   ├── src
+│   ├── requirements.txt
+│   └── README.md
+└── frontend
+    ├── src
+    ├── package.json
+    └── README.md
+```
 
-## Project Overview
-Energy demand forecasting is crucial for optimizing energy distribution and avoiding wastage. In this project:
-- Historical energy demand data is processed and analyzed.
-- Advanced machine learning algorithms, including **XGBoost**, are applied for predictive modeling.
-- Time series techniques are utilized to capture temporal patterns in energy consumption.
+## Backend
 
----
+The backend is built using Flask and serves as the API for the application. It handles data processing, database interactions, and serves requests from the frontend.
 
-## Features and Methodology
-- **Time Series Analysis**: Extracting seasonality, trend, and noise components from the data.
-- **Feature Engineering**: Creating features like lagged values, rolling means, and time-based attributes (hour, day, month, etc.).
-- **Modeling with XGBoost**:
-  - Hyperparameter tuning to optimize performance.
-  - Handling missing values and outliers in the dataset.
-- **Evaluation**:
-  - Metrics: Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE).
-  - Cross-validation for robust evaluation.
+### Setup Instructions
 
----
+1. Navigate to the `backend` directory.
+2. Create a virtual environment:
+   ```
+   python -m venv venv
+   ```
+3. Activate the virtual environment:
+   - On Windows:
+     ```
+     venv\Scripts\activate
+     ```
+   - On macOS/Linux:
+     ```
+     source venv/bin/activate
+     ```
+4. Install the required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+5. Run the Flask application:
+   ```
+   python src/app.py
+   ```
 
-## Technologies Used
-- **Programming Language**: Python
-- **Libraries**:
-  - `pandas`, `numpy` (Data manipulation and analysis)
-  - `matplotlib`, `seaborn` (Visualization)
-  - `XGBoost` (Machine learning model)
+## Frontend
 
+The frontend is built using React and provides a user-friendly interface for interacting with the energy consumption data.
 
----
+### Setup Instructions
 
-## Dataset
-The dataset used for this project is sourced from [Kaggle](https://www.kaggle.com/datasets/robikscube/hourly-energy-consumption). It contains historical energy consumption data, for specific regions in the United States with features such as:
-- Timestamps
-- Energy consumption (MWh)
+1. Navigate to the `frontend` directory.
+2. Install the required dependencies:
+   ```
+   npm install
+   ```
+3. Start the React application:
+   ```
+   npm start
+   ```
 
-The dataset covers various regions in the United States, this model  is trained and tested on Eastern Interconnection grid operating an electric transmission system serving all or parts of Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia, and the District of Columbia. This is known as the PJM East Region.
+## Database
 
-**Preprocessing Steps**:
-- Select a valid region in the United States to train or test the model 
+The application uses MySQL as the database to store energy consumption data. Ensure that the database is set up and configured correctly in the `backend/src/config.py` file.
 
----
+## Contributing
 
-## Installation and Usage
-_This section is under development and will be updated soon._
+Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
 
----
+## License
 
-## Results
-_This sSection is under development and will be updated soon._
-
----
-
-## Future Work
-_This section is under development and will be updated soon._
-
----
-
-## Acknowledgements
-Mulla, R. (2022, July 5th). Time series forecasting with XGBoost - Use Python and machine learning to predict energy consumption [Video]. YouTube. https://youtu.be/vV12dGe_Fho
-
----
-
-### License
-_This section is under development and will be updated soon._
+This project is licensed under the MIT License. See the LICENSE file for more details.
