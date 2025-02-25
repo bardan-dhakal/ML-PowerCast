@@ -1,53 +1,8 @@
-# README for Frontend
+# React + Vite
 
-# Energy Consumption Forecasting Frontend
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This is the frontend application for the Energy Consumption Forecasting project, built using React. It interacts with the Flask backend to provide users with an interface to view and analyze energy consumption forecasts.
+Currently, two official plugins are available:
 
-## Getting Started
-
-To get a local copy up and running, follow these steps.
-
-### Prerequisites
-
-- Node.js (version 14 or higher)
-- npm (Node package manager)
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/energy-forecast-app.git
-   ```
-
-2. Navigate to the frontend directory:
-   ```bash
-   cd energy-forecast-app/frontend
-   ```
-
-3. Install the dependencies:
-   ```bash
-   npm install
-   ```
-
-### Running the Application
-
-To start the development server, run:
-```bash
-npm start
-```
-
-The application will be running on `http://localhost:3000`.
-
-### Built With
-
-- [React](https://reactjs.org/) - The web framework used
-- [Axios](https://axios-http.com/) - For making API calls
-
-### Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request.
-
-### License
-
-This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
