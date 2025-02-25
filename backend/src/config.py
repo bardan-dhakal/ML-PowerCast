@@ -1,6 +1,3 @@
-import os
-
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'your_secret_key'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'mysql://username:password@localhost/db_name'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:your_password@localhost/energy_forecast'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
