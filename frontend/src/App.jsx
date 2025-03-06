@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import './App.css'
 import Chart from './components/Chart'
+import USMap from './components/USMap'
 
 import {
   Chart as ChartJS,
@@ -63,7 +64,7 @@ function App() {
   return (
     <div className="App">
       <h1>Energy Consumption Forecast</h1>
-      <Chart />
+      <USMap />
     </div>
   )
 }
