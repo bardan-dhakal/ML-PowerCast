@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
+
 import axios from 'axios'
+
 import './App.css'
+import Chart from './components/Chart'
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -59,7 +63,7 @@ function App() {
   return (
     <div className="App">
       <h1>Energy Consumption Forecast</h1>
-      {forecastData && <Line data={chartData} />}
+      <Chart />
     </div>
   )
 }

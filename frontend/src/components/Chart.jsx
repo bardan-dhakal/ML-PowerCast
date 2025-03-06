@@ -20,8 +20,25 @@ ChartJS.register(
   Tooltip,
   Legend
 )
-
-const Chart = ({ data }) => {
+const exampleData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    datasets: [
+      {
+        label: 'Actual Consumption',
+        data: [65, 59, 80, 81, 56],
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+      },
+      {
+        label: 'Predicted Consumption',
+        data: [70, 62, 75, 85, 58],
+        borderColor: 'rgb(255, 99, 132)',
+        tension: 0.1
+      }
+    ]
+  }
+  
+const Chart = ({ data= exampleData }) => {
   const options = {
     responsive: true,
     plugins: {
