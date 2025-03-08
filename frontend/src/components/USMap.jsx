@@ -15,6 +15,14 @@ const USMap = () => {
     
     const [showTooltip, setShowTooltip] = useState(false)
 
+    const [CursorPosition, setCursorPosition] = useState({ x:0, y:0 })
+
+    const track_cursor = (event) => {
+        setCursorPosition({x: event.clientX, y: event.clientY})
+    }
+
+
+
     const handleMouseEnter = (isPJMState) => {
         if (isPJMState) {
             setShowTooltip(true)
@@ -31,7 +39,10 @@ const USMap = () => {
     }
 
     return (
-        <div style={{ width: "100%", height: "500px" }}>
+        <div 
+            style={{ width: "100%", height: "500px" }}
+            onMouseMove={track_cursor} 
+        >
             <ComposableMap projection="geoAlbersUsa">
                 <Geographies geography={geoUrl}>
                     {({ geographies }) =>
@@ -88,14 +99,16 @@ const USMap = () => {
             {showTooltip && (
                 <div style={{
                     position: "absolute",
-                    top: "20px",
-                    right: "20px",
+                    left: `${CursorPosition.x + 10}px`,
+                    top: `${CursorPosition.y - 10}px`,
+                    //top: "20px",
+                    // right: "20px",
                     padding: "10px",
                     background: "rgba(0, 0, 0, 0.8)",
                     color: "white",
                     borderRadius: "4px",
                 }}>
-                    PJM Interconnection Region
+                    PJM Interconnection Region Forecasts
                 </div>
             )}
         </div>
