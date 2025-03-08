@@ -12,6 +12,18 @@ const pjmStates = [
 
 const USMap = () => {
     const [isRegionSelected, setIsRegionSelected] = useState(false)
+    
+    const [showTooltip, setShowTooltip] = useState(false)
+
+    const handleMouseEnter = (isPJMState) => {
+        if (isPJMState) {
+            setShowTooltip(true)
+        }
+    }
+    
+    const handleMouseLeave = () => {
+        setShowTooltip(false)
+    }
 
     const handleRegionClick = () => {
         setIsRegionSelected(!isRegionSelected)
@@ -45,6 +57,8 @@ const USMap = () => {
                                         pressed: { outline: "none" }
                                     }}
                                     onClick={() => isPJMState && handleRegionClick()}
+                                    onMouseEnter = {() => handleMouseEnter(isPJMState)}
+                                    onMouseLeave = {handleMouseLeave}
                                 />
                             )
                         })
@@ -71,6 +85,19 @@ const USMap = () => {
                     PJM Interconnection Region
                 </div>
             </div>
+            {showTooltip && (
+                <div style={{
+                    position: "absolute",
+                    top: "20px",
+                    right: "20px",
+                    padding: "10px",
+                    background: "rgba(0, 0, 0, 0.8)",
+                    color: "white",
+                    borderRadius: "4px",
+                }}>
+                    PJM Interconnection Region
+                </div>
+            )}
         </div>
     )
 }
