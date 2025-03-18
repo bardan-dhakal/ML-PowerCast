@@ -83,7 +83,7 @@ energy-forecast-app
    ```
 3. Start React application:
    ```bash
-   npm start
+   npm run dev
    ```
 
 ### Database Configuration
