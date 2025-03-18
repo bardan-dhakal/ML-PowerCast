@@ -5,6 +5,7 @@ import axios from 'axios'
 import './App.css'
 import Chart from './components/Chart'
 import USMap from './components/USMap'
+//import TooltipComponent from './components/Tooltip'
 
 import {
   Chart as ChartJS,

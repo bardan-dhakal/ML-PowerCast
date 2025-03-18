@@ -20,6 +20,8 @@ ChartJS.register(
   Tooltip,
   Legend
 )
+
+// dummy data for chart
 const exampleData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
     datasets: [
@@ -37,7 +39,9 @@ const exampleData = {
       }
     ]
   }
-  
+
+
+
 const Chart = ({ data= exampleData }) => {
   const options = {
     responsive: true,
