@@ -79,4 +79,4 @@ class DatabaseService:
         except Exception as e:
             logger.error(f"Error saving prediction: {e}")
             db.session.rollback()
-            raise 
+            raise
