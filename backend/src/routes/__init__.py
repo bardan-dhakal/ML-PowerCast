@@ -9,7 +9,3 @@ def register_routes(app):
             'actual': [100, 120],
             'predicted': [98, 115]
         })
-    
-    with app.app_context():
-        db.init_app(app)
-        db.create_all()

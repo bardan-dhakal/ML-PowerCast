@@ -9,6 +9,9 @@ class DatabaseService:
     @staticmethod
     def init_database(app):
         """Initialize database tables"""
+        # Initialize SQLAlchemy with the Flask app
+        db.init_app(app)
+        
         with app.app_context():
             try:
                 db.create_all()
