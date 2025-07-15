@@ -25,8 +25,11 @@ def create_app():
     # Register routes
     register_routes(app)
     
+    print("ENV config value:", app.config.get('ENV'))
+
     # Load sample data (only in development)
     if app.config.get('ENV') == 'development':
+        print("Sample data block is running!")  # Add this line    
         try:
             DatabaseService.load_sample_data()
             logger.info("Sample data loaded successfully")
