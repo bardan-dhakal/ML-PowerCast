@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    ENV = os.getenv('FLASK_ENV', 'development')
     SQLALCHEMY_DATABASE_URI = (
         f"mysql://{os.getenv('DB_USER', 'root')}:"
         f"{os.getenv('DB_PASSWORD', 'your_password')}@"
@@ -18,3 +17,4 @@ class Config:
         'pool_pre_ping': True
     }
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key')
+    ENV = 'development'
