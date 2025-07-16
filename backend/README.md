@@ -1,5 +1,7 @@
 # README for the Backend of the Energy Forecast App
 
+NOTE: The environment is set to 'development' in config.py by default. This ensures that sample data is loaded automatically for development and testing. Remove or change this setting for production deployments.
+
 This README file provides instructions for setting up and running the backend of the Energy Forecast App, which is built using Flask and connects to a MySQL database.
 
 ## Project Structure
