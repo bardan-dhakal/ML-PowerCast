@@ -31,7 +31,7 @@ def create_app():
     if app.config.get('ENV') == 'development':
         print("Sample data block is running!")  # Add this line    
         try:
-            DatabaseService.load_sample_data()
+            DatabaseService.load_sample_data(app)
             logger.info("Sample data loaded successfully")
         except Exception as e:
             logger.warning(f"Could not load sample data: {e}")

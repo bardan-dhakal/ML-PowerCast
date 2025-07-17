@@ -21,38 +21,39 @@ class DatabaseService:
                 raise
     
     @staticmethod
-    def load_sample_data():
+    def load_sample_data(app):
         """Load sample energy consumption data"""
-        try:
+        with app.app_context():
+            try:
             # Check if data already exists
-            if EnergyData.query.first():
-                logger.info("Sample data already exists")
-                return
+                if EnergyData.query.first():
+                    logger.info("Sample data already exists")
+                    return
             
             # Create sample data (you can replace this with real data loading)
-            sample_data = []
-            base_time = datetime.now() - timedelta(days=30)
+                sample_data = []
+                base_time = datetime.now() - timedelta(days=30)
             
-            for i in range(720):  # 30 days * 24 hours
-                timestamp = base_time + timedelta(hours=i)
-                consumption = 100 + (i % 24) * 5 + (timestamp.weekday() * 10)
+                for i in range(720):  # 30 days * 24 hours
+                    timestamp = base_time + timedelta(hours=i)
+                    consumption = 100 + (i % 24) * 5 + (timestamp.weekday() * 10)
                 
-                data = EnergyData(
-                    timestamp=timestamp,
-                    consumption_mw=consumption,
-                    region="PJM",  # You can change this to match your data
-                    created_at=datetime.utcnow()
-                )
-                sample_data.append(data)
+                    data = EnergyData(
+                        timestamp=timestamp,
+                        consumption_mw=consumption,
+                        region="PJM",  # You can change this to match your data
+                        created_at=datetime.utcnow()
+                    )
+                    sample_data.append(data)
             
-            db.session.add_all(sample_data)
-            db.session.commit()
-            logger.info(f"Loaded {len(sample_data)} sample records")
+                db.session.add_all(sample_data)
+                db.session.commit()
+                logger.info(f"Loaded {len(sample_data)} sample records")
             
-        except Exception as e:
-            logger.error(f"Error loading sample data: {e}")
-            db.session.rollback()
-            raise
+            except Exception as e:
+                logger.error(f"Error loading sample data: {e}")
+                db.session.rollback()
+                raise
     
     @staticmethod
     def get_energy_data(start_date=None, end_date=None, limit=100):
