@@ -1,11 +1,5 @@
-import { useState, useEffect } from 'react'
 
-import axios from 'axios'
-
-import './App.css'
-import Chart from './components/Chart'
-import USMap from './components/USMap'
-//import TooltipComponent from './components/Tooltip'
+import USEnergyMap from './components/USEnergyMap.jsx';
 
 import {
   Chart as ChartJS,
@@ -30,44 +24,13 @@ ChartJS.register(
 )
 
 function App() {
-  const [forecastData, setForecastData] = useState(null)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/forecast')
-        setForecastData(response.data)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-    }
-    fetchData()
-  }, [])
-
-  const chartData = {
-    labels: forecastData?.timestamps || [],
-    datasets: [
-      {
-        label: 'Actual Consumption',
-        data: forecastData?.actual || [],
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-      },
-      {
-        label: 'Predicted Consumption',
-        data: forecastData?.predicted || [],
-        borderColor: 'rgb(255, 99, 132)',
-        tension: 0.1
-      }
-    ]
-  }
 
   return (
-    <div className="App">
-      <h1>Energy Consumption Forecast</h1>
-      <USMap />
+    <div>
+      <USEnergyMap />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
