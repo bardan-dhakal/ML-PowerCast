@@ -24,10 +24,8 @@ ChartJS.register(
 )
 
 function App() {
-
-
   return (
-    <div>
+    <div className="min-h-screen flex items-center justify-center p-4 bg-background">
       <USEnergyMap />
     </div>
   );

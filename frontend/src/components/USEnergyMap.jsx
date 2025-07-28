@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const USEnergyMap = () => {
-  const [hoveredRegion, setHoveredRegion] = useState(null);
-
   const energyRegions = [
     {
       id: 'caiso',
@@ -55,15 +53,29 @@ const USEnergyMap = () => {
     }
   ];
 
+  // Pre-calculate label positions
+  const getLabelPosition = (regionId) => {
+    const positions = {
+      caiso: { x: 120, y: 260 },
+      ercot: { x: 300, y: 340 },
+      pjm: { x: 600, y: 200 },
+      miso: { x: 400, y: 180 },
+      spp: { x: 280, y: 180 },
+      nyiso: { x: 760, y: 100 },
+      isone: { x: 880, y: 100 }
+    };
+    return positions[regionId] || { x: 0, y: 0 };
+  };
+
   return (
-    <div className="relative w-full h-full bg-gradient-map rounded-xl p-8">
+    <div className="relative bg-gradient-map rounded-xl p-8">
       {/* Header */}
       <div className="mb-8 text-center">
         <h2 className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
           Energy Market Regions
         </h2>
         <p className="text-muted-foreground">
-          Hover over regions to explore major energy markets across the United States
+          Major energy markets across the United States
         </p>
       </div>
 
@@ -84,58 +96,30 @@ const USEnergyMap = () => {
           />
 
           {/* Energy Regions */}
-          {energyRegions.map((region) => (
-            <g key={region.id}>
-              <path
-                d={region.path}
-                fill={hoveredRegion === region.id ? region.color : `${region.color}80`}
-                stroke={hoveredRegion === region.id ? region.color : 'hsl(var(--border))'}
-                strokeWidth={hoveredRegion === region.id ? "3" : "1.5"}
-                className={`cursor-pointer transition-all duration-300 ${
-                  hoveredRegion === region.id 
-                    ? 'shadow-region-hover animate-map-hover' 
-                    : 'shadow-region'
-                }`}
-                style={{
-                  filter: hoveredRegion === region.id 
-                    ? 'drop-shadow(0 16px 48px rgba(59, 130, 246, 0.25))' 
-                    : 'drop-shadow(0 4px 12px rgba(59, 130, 246, 0.1))',
-                  transform: hoveredRegion === region.id 
-                    ? 'scale(1.02) translateY(-2px)' 
-                    : 'scale(1)',
-                  transformOrigin: 'center'
-                }}
-                onMouseEnter={() => setHoveredRegion(region.id)}
-                onMouseLeave={() => setHoveredRegion(null)}
-              />
-              
-              {/* Region Label */}
-              <text
-                x={region.id === 'caiso' ? 120 : 
-                   region.id === 'ercot' ? 300 :
-                   region.id === 'pjm' ? 600 :
-                   region.id === 'miso' ? 400 :
-                   region.id === 'spp' ? 280 :
-                   region.id === 'nyiso' ? 760 :
-                   880}
-                y={region.id === 'caiso' ? 260 :
-                   region.id === 'ercot' ? 340 :
-                   region.id === 'pjm' ? 200 :
-                   region.id === 'miso' ? 180 :
-                   region.id === 'spp' ? 180 :
-                   region.id === 'nyiso' ? 100 :
-                   100}
-                textAnchor="middle"
-                className={`font-semibold pointer-events-none transition-all duration-300 ${
-                  hoveredRegion === region.id
-                    ? 'text-lg fill-foreground'
-                    : 'text-sm fill-muted-foreground'
-                }`}
-              >
-                {region.name}
-              </text>
-            </g>
-          ))}
+          {energyRegions.map((region) => {
+            const labelPos = getLabelPosition(region.id);
+            
+            return (
+              <g key={region.id}>
+                <path
+                  d={region.path}
+                  fill={`${region.color}80`}
+                  stroke="hsl(var(--border))"
+                  strokeWidth="1.5"
+                />
+                
+                {/* Region Label */}
+                <text
+                  x={labelPos.x}
+                  y={labelPos.y}
+                  textAnchor="middle"
+                  className="font-semibold text-sm fill-muted-foreground"
+                >
+                  {region.name}
+                </text>
+              </g>
+            );
+          })}
 
           {/* Grid Lines */}
           <defs>
@@ -145,32 +129,6 @@ const USEnergyMap = () => {
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
         </svg>
-
-        {/* Region Info Panel */}
-        {hoveredRegion && (
-          <div className="absolute top-4 right-4 bg-card/95 backdrop-blur-sm border rounded-lg p-4 shadow-elevated animate-in slide-in-from-right-2 duration-300">
-            {(() => {
-              const region = energyRegions.find(r => r.id === hoveredRegion);
-              return region ? (
-                <div className="space-y-2">
-                  <h3 className="font-bold text-foreground" style={{ color: region.color }}>
-                    {region.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground max-w-48">
-                    {region.fullName}
-                  </p>
-                  <div className="flex items-center gap-2 pt-2 border-t">
-                    <div 
-                      className="w-3 h-3 rounded-full animate-pulse-glow"
-                      style={{ backgroundColor: region.color }}
-                    />
-                    <span className="text-xs text-muted-foreground">Active Market</span>
-                  </div>
-                </div>
-              ) : null;
-            })()}
-          </div>
-        )}
       </div>
 
       {/* Legend */}
@@ -178,9 +136,7 @@ const USEnergyMap = () => {
         {energyRegions.map((region) => (
           <div
             key={region.id}
-            className="flex items-center gap-2 px-3 py-2 bg-card rounded-md border hover:shadow-sm transition-all duration-200 cursor-pointer"
-            onMouseEnter={() => setHoveredRegion(region.id)}
-            onMouseLeave={() => setHoveredRegion(null)}
+            className="flex items-center gap-2 px-3 py-2 bg-card rounded-md border"
           >
             <div
               className="w-3 h-3 rounded-sm"
