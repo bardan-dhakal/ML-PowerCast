@@ -13,7 +13,7 @@ def register_routes(app):
             'predicted': [98, 115]
         })
     
-    @app.route('api/health', methods=['GET'])
+    @app.route('/api/health', methods=['GET'])
     def health_check():
         """Verify Database connectivity"""
         try:
@@ -31,7 +31,7 @@ def register_routes(app):
                 'timestamp': datetime.utcnow().isoformat()
             }), 500
         
-    @app.route('api/data/count', methods=['GET'])
+    @app.route('/api/data/count', methods=['GET'])
     def get_data_count():
         """Get count of energy data records"""
         try:
@@ -45,7 +45,7 @@ def register_routes(app):
         except Exception as e:
             return jsonify({'error': str(e)}), 500
     
-    @app.route('api/data/sample', methods=['GET'])
+    @app.route('/api/data/sample', methods=['GET'])
     def get_data_sample():
         """Get sample energy data from database"""
         try:
@@ -57,3 +57,19 @@ def register_routes(app):
             })
         except Exception as e:
             return jsonify({'error': str(e)}), 500
+    
+    @app.route('/api/status', methods=['GET'])
+    def get_api_status():
+        """Get API status and version information"""
+        return jsonify({
+            'status': 'running',
+            'version': '1.0.0',
+            'timestamp': datetime.utcnow().isoformat(),
+            'endpoints': [
+                '/api/forecast',
+                '/api/health', 
+                '/api/data/count',
+                '/api/data/sample',
+                '/api/status'
+            ]
+        })
