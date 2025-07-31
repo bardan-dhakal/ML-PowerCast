@@ -1,19 +1,14 @@
 # Energy Consumption Forecasting Project
 
 ## Overview
-This project combines machine learning and software engineering to create an interactive web application for energy consumption forecasting. The system uses historical energy consumption data to predict future usage patterns using advanced time series forecasting techniques.
+This project combines machine learning and software engineering to create an interactive web application for energy consumption forecasting. The system uses historical energy consumption data to predict future usage patterns using advanced time series forecasting techniques with a modern React frontend and Flask backend.
 
 ## Project Structure
 ```
-energy-forecast-app
-├── backend
-│   ├── src
-│   ├── requirements.txt
-│   └── README.md
-└── frontend
-    ├── src
-    ├── package.json
-    └── README.md
+Energy_Consumption_Forecasting/
+├── backend/
+│   ├── src/
+│   │   ├── app.py                 # Flask applica
 ```
 
 ## Technical Components
