@@ -2,6 +2,7 @@ from flask import jsonify, request
 from models import db, EnergyData, Prediction
 from utils.database import DatabaseService
 from datetime import datetime, timedelta
+from sqlalchemy import text
 
 
 def register_routes(app):
@@ -17,7 +18,7 @@ def register_routes(app):
     def health_check():
         """Verify Database connectivity"""
         try:
-            db.session.execute('SELECT 1')
+            db.session.execute(text('SELECT 1'))
             return jsonify({
                 'status':'healthy',
                 'database': 'connected',
